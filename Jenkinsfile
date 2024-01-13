@@ -11,36 +11,36 @@ pipeline {
         stage('Install Dependencies') {
             steps {
               tool 'Node 20.11.0'                
-              powershell 'npm install'
+              bat 'npm install'
             }
         }
 
         stage('Build Angular App') {
             steps {
-                powershell 'npm run build'
+              bat 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing..'
-                powershell 'ng test'
+              echo 'Testing..'
+              powershell 'ng test'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
-                # Ajoutez ici vos commandes de déploiement en PowerShell
+              echo 'Deploying....'
+              # Ajoutez ici vos commandes de déploiement en PowerShell
             }
         }
     }
 
     post {
         failure {
-            script {
-                echo 'La pipeline a échoué'
-            }
+          script {
+            echo 'La pipeline a échoué'
+          }
         }
     }
 }
