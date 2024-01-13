@@ -34,6 +34,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Laissez cette étape vide pour le moment
+              echo 'test'
             }
         }
     }
