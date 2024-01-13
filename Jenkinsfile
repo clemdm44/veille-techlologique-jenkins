@@ -7,7 +7,7 @@ pipeline {
                 checkout scm
             }
         }
-
+      ]
         stage('Install Dependencies') {
             steps {
               tool 'Node 20.11.0'                
