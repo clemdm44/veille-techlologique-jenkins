@@ -11,7 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-              tool 'NodeJS 20.11.0'                
+              tool 'Node 20.11.0'                
               sh 'npm install'
             }
         }
