@@ -3,7 +3,6 @@ pipeline {
     
     environment {
         NODEJS_HOME = tool 'Node 20.11.0'
-        ANGULAR_CLI_HOME = tool 'Angular CLI'
     }
 
     stages {
@@ -21,13 +20,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat "${ANGULAR_CLI_HOME}\\ng build --prod"
+                bat "${NODEJS_HOME}\\ng build --prod"
             }
         }
 
         stage('Test') {
             steps {
-                bat "${ANGULAR_CLI_HOME}\\ng test"
+                bat "${NODEJS_HOME}\\ng test"
             }
         }
 
