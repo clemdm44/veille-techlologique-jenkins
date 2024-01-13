@@ -14,14 +14,14 @@ pipeline {
         stage('Build Angular App') {
             steps {
                 // Build the Angular app
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
                 // Commande pour exécuter les tests Angular
-                bat 'ng test'
+                sh 'ng test'
             }
         }
         stage('Deploy') {
