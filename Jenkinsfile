@@ -2,20 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                script {
-                    echo 'Building..'
-                    // Commande pour installer les dépendances et compiler le projet Angular
-                    sh 'npm install'
-                    def buildResult = sh(script: 'ng build --prod', returnStatus: true)
-                    
-                    if (buildResult == 0) {
-                        echo 'Build successful!'
-                    } else {
-                        error 'Build failed! Please check the compilation errors.'
-                    }
-                }
+                // Check out the source code from your repository
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Use Node.js and npm installed on the Jenkins agent
+                sh 'npm install'
+            }
+        }
+
+        stage('Build Angular App') {
+            steps {
+                // Build the Angular app
+                sh 'npm run build'
             }
         }
         stage('Test') {
