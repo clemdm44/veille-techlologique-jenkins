@@ -12,11 +12,10 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                timeout(time: 1, unit: 'MINUTES') {
-                    bat "${NODEJS_HOME}\\npm install"
-                }
+    stage('Install Dependencies') {
+        steps {
+              bat "${NODEJS_HOME}\\npm install -g npm"
+              bat "${NODEJS_HOME}\\npm install"
             }
         }
 
