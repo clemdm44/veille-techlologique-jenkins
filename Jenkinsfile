@@ -33,7 +33,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Déployer l'application, par exemple sur un serveur Web
+                // Laissez cette étape vide pour le moment
             }
         }
     }
