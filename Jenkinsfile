@@ -12,6 +12,13 @@ pipeline {
             }
         }
 
+      stage('Install Dependencies') {
+        steps {
+              bat "${NODEJS_HOME}\\npm install -g npm"
+              bat "${NODEJS_HOME}\\npm install"
+            }
+        }
+
         stage('Build') {
             steps {
                 bat "${NODEJS_HOME}\\ng build --prod"
