@@ -4,30 +4,34 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Check out the source code from your repository
                 checkout scm
             }
         }
 
-
+        stage('Install Dependencies') {
+            steps {
+              tool 'Node 20.11.0'                
+              powershell 'npm install'
+            }
+        }
 
         stage('Build Angular App') {
             steps {
-                // Build the Angular app
-                sh 'npm run build'
+                powershell 'npm run build'
             }
         }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
-                // Commande pour exécuter les tests Angular
-                sh 'ng test'
+                powershell 'ng test'
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                // Commandes de déploiement
+                # Ajoutez ici vos commandes de déploiement en PowerShell
             }
         }
     }
