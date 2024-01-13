@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    
+    environment {
+        NODEJS_HOME = tool 'Node 20.11.0'
+        ANGULAR_CLI_HOME = tool 'Angular CLI'
+    }
 
     stages {
         stage('Checkout') {
@@ -7,28 +12,43 @@ pipeline {
                 checkout scm
             }
         }
+
         stage('Install Dependencies') {
-          steps {
-            tool 'Node 20.11.0'                
-            bat 'node -v'
-          }
-      }
+            steps {
+                bat "${NODEJS_HOME}\\npm install"
+            }
+        }
+
         stage('Build') {
             steps {
-                // Les étapes de construction ici
+                bat "${ANGULAR_CLI_HOME}\\ng build --prod"
             }
         }
 
         stage('Test') {
             steps {
-                // Les étapes de test ici
+                bat "${ANGULAR_CLI_HOME}\\ng test"
             }
         }
 
         stage('Deploy') {
             steps {
-                // Les étapes de déploiement ici
+                // Déployer l'application, par exemple sur un serveur Web
             }
+        }
+    }
+
+    post {
+        success {
+            emailext subject: 'Build réussi',
+                      body: 'La construction de l\'application Angular s\'est terminée avec succès.',
+                      to: 'clement.dumoulin1@gmail.com'
+        }
+
+        failure {
+            emailext subject: 'Échec de la construction',
+                      body: 'La construction de l\'application Angular a échoué. Veuillez vérifier les logs pour plus d\'informations.',
+                      to: 'clement.dumoulin1@gmail.com'
         }
     }
 }
