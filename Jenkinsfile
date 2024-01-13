@@ -9,12 +9,7 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-              tool 'Node 20.11.0'                
-              bat 'npm install'
-            }
-        }
+
 
         stage('Build Angular App') {
             steps {
