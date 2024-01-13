@@ -12,27 +12,27 @@ pipeline {
         stage('Install Dependencies') {
             steps {
               tool 'Node 20.11.0'                
-              sh 'npm install'
+              bat 'npm install'
             }
         }
 
         stage('Build Angular App') {
             steps {
                 // Build the Angular app
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
                 // Commande pour exécuter les tests Angular
-                sh 'ng test'
+                bat 'ng test'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                // Vous pouvez insérer ici vos commandes de déploiement
+                // Commandes de déploiement
             }
         }
     }
