@@ -31,7 +31,6 @@ pipeline {
         stage('Deploy') {
             steps {
               echo 'Deploying....'
-              # Ajoutez ici vos commandes de déploiement en PowerShell
             }
         }
     }
