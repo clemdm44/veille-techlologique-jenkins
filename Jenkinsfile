@@ -11,8 +11,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Use Node.js and npm installed on the Jenkins agent
-                sh 'npm install'
+              tool 'NodeJS 20.11.0'                
+              sh 'npm install'
             }
         }
 
