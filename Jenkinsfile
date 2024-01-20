@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'test'
-                error 'Le build de l'application a échoué.'
+                error 'Build failed.'
             }
         }
 
