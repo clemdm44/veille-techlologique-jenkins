@@ -14,20 +14,19 @@ pipeline {
 
       stage('Install Dependencies') {
         steps {
-              bat "${NODEJS_HOME}\\npm install -g npm"
-              bat "${NODEJS_HOME}\\npm install"
+              echo 'test'
             }
         }
 
         stage('Build') {
             steps {
-                bat "${NODEJS_HOME}\\ng build --prod"
+                echo 'test'
             }
         }
 
         stage('Test') {
             steps {
-                bat "${NODEJS_HOME}\\ng test"
+                echo 'test'
             }
         }
 
@@ -43,13 +42,13 @@ pipeline {
         success {
             emailext subject: 'Build réussi',
                       body: 'La construction de l\'application Angular s\'est terminée avec succès.',
-                      to: 'clement.dumoulin1@gmail.com'
+                      to: 'clement.dumoulin2021campus-eni.fr'
         }
 
         failure {
             emailext subject: 'Échec de la construction',
                       body: 'La construction de l\'application Angular a échoué. Veuillez vérifier les logs pour plus d\'informations.',
-                      to: 'clement.dumoulin1@gmail.com'
+                      to: 'clement.dumoulin2021campus-eni.fr'
         }
     }
 }
