@@ -20,9 +20,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    echo 'test'
-                }
+                echo 'test'
+                error 'Le build de l'application a échoué.'
             }
         }
 
