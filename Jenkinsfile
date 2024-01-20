@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'test'
-                error 'Build failed.'
+                error 'Build failed. Could not find stylesheet file app.component.css linked from the template.'
             }
         }
 
