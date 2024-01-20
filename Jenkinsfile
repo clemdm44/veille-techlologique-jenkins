@@ -1,4 +1,4 @@
-pipeline { 
+pipeline {
     agent any
     
     environment {
@@ -12,15 +12,17 @@ pipeline {
             }
         }
 
-      stage('Install Dependencies') {
-        steps {
-              echo 'test'
+        stage('Install Dependencies') {
+            steps {
+                echo 'test'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'test'
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    echo 'test'
+                }
             }
         }
 
