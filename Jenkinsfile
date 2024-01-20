@@ -46,7 +46,7 @@ pipeline {
         }
 
         failure {
-            emailext subject: 'Échec de la construction',
+            emailext subject: 'Build failed',
                       body: 'La construction de l\'application Angular a échoué. Veuillez vérifier les logs pour plus d\'informations.',
                       to: 'clement.dumoulin1@gmail.com'
         }
