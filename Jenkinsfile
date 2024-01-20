@@ -1,4 +1,4 @@
-pipeline {
+pipeline { 
     agent any
     
     environment {
@@ -12,15 +12,16 @@ pipeline {
             }
         }
 
-      stage('Install Dependencies') {
-        steps {
-              echo 'test'
+        stage('Install Dependencies') {
+            steps {
+                echo 'test'
             }
         }
 
         stage('Build') {
             steps {
                 echo 'test'
+                error 'Build failed. Could not find stylesheet file app.component.css linked from the template.'
             }
         }
 
@@ -32,7 +33,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Laissez cette étape vide pour le moment
                 echo 'test'
             }
         }
@@ -42,13 +42,13 @@ pipeline {
         success {
             emailext subject: 'Build réussi',
                       body: 'La construction de l\'application Angular s\'est terminée avec succès.',
-                      to: 'clement.dumoulin2021campus-eni.fr'
+                      to: 'clement.dumoulin2021@campus-eni.fr'
         }
 
         failure {
-            emailext subject: 'Échec de la construction',
+            emailext subject: 'Build failed',
                       body: 'La construction de l\'application Angular a échoué. Veuillez vérifier les logs pour plus d\'informations.',
-                      to: 'clement.dumoulin2021campus-eni.fr'
+                      to: 'clement.dumoulin2021@campus-eni.fr'
         }
     }
 }
