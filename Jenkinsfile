@@ -42,7 +42,7 @@ pipeline {
         success {
             emailext subject: 'Build réussi',
                       body: 'La construction de l\'application Angular s\'est terminée avec succès.',
-                      to: 'clement.dumoulin2021campus-eni.fr'
+                      to: 'clement.dumoulin2021campus-eni.fr' 
         }
 
         failure {
